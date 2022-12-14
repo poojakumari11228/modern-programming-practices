@@ -1,0 +1,4 @@
+The equals and hashCode have been implemented correctly in Employee Class, but the values in the HashMap were changed during the process of removing duplicates hence the keys are modified which leads to unequal hashcode for the Employee object with same name & salary but different value in visited variable
+so this is violating the principle that keys should be immutable
+
+Solution: make keys immutable

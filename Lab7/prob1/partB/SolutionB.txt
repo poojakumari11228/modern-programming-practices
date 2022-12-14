@@ -1,0 +1,12 @@
+The employee class have implemented the toString and equals method which is good, but it has no implementation of HashCode method as we are comparing two lists in the problem and both have their own memory references for each Employee objects, so when we compare l2.contains(e) it gives return false even though it has Employee with same name and salary.
+Also equals method should check if object is instanceof Employee as well as the null object condition
+
+// here is the solution for the part B, if we change the contains method to inList method it will compare both objects using equals implemented method
+
+	public static boolean listsAreEqual(List<Employee> l1, List<Employee> l2) {
+		if(l1.size() != l2.size()) return false;
+		for(Employee e : l1) {
+			if(!inList(e,l2)) return false;
+		}
+		return true;
+	}
