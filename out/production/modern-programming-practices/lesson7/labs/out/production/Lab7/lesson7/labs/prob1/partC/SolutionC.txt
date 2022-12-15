@@ -1,0 +1,5 @@
+In this solution we have correct implementation of equals method, but we are not using it to compare the employee obejcts. we are using the contains method which compare the Employee object instance that is different for even when two employees objects are created with new key word having same name and salary.
+also there is no hashCode implementation.
+
+Solution:
+implement hashCode for Employee
