@@ -82,9 +82,6 @@ public static void main(String args[]){
 	System.out.println(Arrays.stream(list)
 			.filter(x->x.getGender().equals("Male") && x.getAge()>30 )
 			.count());
-
-
-    
    }
 
 

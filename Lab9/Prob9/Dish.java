@@ -1,4 +1,5 @@
 package Lab9.Prob9;
+
 import java.util.*;
 /*
 In this class implement some static methods to decide the following with help of Optional, anyMatch(), allMatch(),
@@ -19,7 +20,7 @@ public class Dish {
     private final int calories;
     private final Dish.Type type;
 
-    public Dish(String name, boolean vegetarian, int calories,Dish.Type type) {
+    public Dish(String name, boolean vegetarian, int calories, Dish.Type type) {
         this.name = name;
         this.vegetarian = vegetarian;
         this.calories = calories;
@@ -42,7 +43,7 @@ public class Dish {
         return type;
     }
 
-    public enum Type { MEAT, FISH, OTHER }
+    public enum Type {MEAT, FISH, OTHER}
 
     @Override
     public String toString() {
@@ -50,45 +51,49 @@ public class Dish {
     }
 
     public static final java.util.List<Dish> menu =
-            java.util.Arrays.asList( new Lab9.Prob9.Dish("pork", false, 800, Dish.Type.MEAT),
-                           new Lab9.Prob9.Dish("beef", false, 700, Dish.Type.MEAT),
-                           new Lab9.Prob9.Dish("chicken", false, 400, Dish.Type.MEAT),
-                           new Lab9.Prob9.Dish("french fries", true, 530, Dish.Type.OTHER),
-                           new Lab9.Prob9.Dish("rice", true, 350, Dish.Type.OTHER),
-                           new Lab9.Prob9.Dish("season fruit", true, 120, Dish.Type.OTHER),
-                           new Lab9.Prob9.Dish("pizza", true, 550, Dish.Type.OTHER),
-                           new Lab9.Prob9.Dish("prawns", false, 400, Dish.Type.FISH),
-                           new Lab9.Prob9.Dish("salmon", false, 450, Dish.Type.FISH));
+            java.util.Arrays.asList(new Lab9.Prob9.Dish("pork", false, 800, Dish.Type.MEAT),
+                    new Lab9.Prob9.Dish("beef", false, 700, Dish.Type.MEAT),
+                    new Lab9.Prob9.Dish("chicken", false, 400, Dish.Type.MEAT),
+                    new Lab9.Prob9.Dish("french fries", true, 530, Dish.Type.OTHER),
+                    new Lab9.Prob9.Dish("rice", true, 350, Dish.Type.OTHER),
+                    new Lab9.Prob9.Dish("season fruit", true, 120, Dish.Type.OTHER),
+                    new Lab9.Prob9.Dish("pizza", true, 550, Dish.Type.OTHER),
+                    new Lab9.Prob9.Dish("prawns", false, 400, Dish.Type.FISH),
+                    new Lab9.Prob9.Dish("salmon", false, 450, Dish.Type.FISH));
 
-    public static boolean isVegMealAvailable(){
-      return  menu.stream()
-                .anyMatch(y->y.isVegetarian()==true);
-    };
-
-    public static boolean isAnyHealthyMeal(){
+    public static boolean isVegMealAvailable() {
         return menu.stream()
-                .anyMatch(y->y.getCalories()<1000);
-    }
-    public static boolean isAnyUnHealthyMeal(){
-        return menu.stream()
-                .anyMatch(y->y.getCalories()>1000);
+                .anyMatch(y -> y.isVegetarian() == true);
     }
 
-    public static Optional<Dish> firstMeatItem(){
+    ;
+
+    public static boolean isAnyHealthyMeal() {
         return menu.stream()
-                .filter(x->x.getType()== Dish.Type.MEAT)
+                .anyMatch(y -> y.getCalories() < 1000);
+    }
+
+    public static boolean isAnyUnHealthyMeal() {
+        return menu.stream()
+                .anyMatch(y -> y.getCalories() > 1000);
+    }
+
+    public static Optional<Dish> firstMeatItem() {
+        return menu.stream()
+                .filter(x -> x.getType() == Dish.Type.MEAT)
                 .findFirst();
     }
 
-    public static int calculateTotalCalories(){
+    public static int calculateTotalCalories() {
         return menu.stream()
-                .map(y->y.getCalories())
-                .reduce(0,(x,y)->x+y);
+                .map(y -> y.getCalories())
+                .reduce(0, (x, y) -> x + y);
     }
-    public static int calculateTotalCaloriesMethodReference(){
+
+    public static int calculateTotalCaloriesMethodReference() {
         return menu.stream()
-                .map(y->y.getCalories())
-                .reduce(0,Integer::sum);
+                .map(y -> y.getCalories())
+                .reduce(0, Integer::sum);
     }
 
 
